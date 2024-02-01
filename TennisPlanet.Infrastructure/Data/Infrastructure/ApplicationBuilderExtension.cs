@@ -27,6 +27,9 @@ namespace TennisPlanet.Infrastructure.Data.Infrastructure
             var dataBrand = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             SeedBrands(dataBrand);
 
+            var dataDimension = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            SeedDimensions(dataDimension);
+
             return app;
         }
         private static void SeedCategories(ApplicationDbContext dataCategory)
@@ -64,6 +67,29 @@ namespace TennisPlanet.Infrastructure.Data.Infrastructure
             });
             dataBrand.SaveChanges();
         }
+        private static void SeedDimensions(ApplicationDbContext dataDimension)
+        {
+            if (dataDimension.Dimensions.Any())
+            {
+                return;
+            }
+            dataDimension.Dimensions.AddRange(new[]
+            {
+                new Dimension{Size="No size"},
+                new Dimension{Size="S"},
+                new Dimension{Size="M"},
+                new Dimension{Size="L"},
+                new Dimension{Size="XL"},
+                new Dimension{Size="37"},
+                new Dimension{Size="38"},
+                new Dimension{Size="39"},
+                new Dimension{Size="40"},
+                new Dimension{Size="41"},
+                new Dimension{Size="42"},
+                new Dimension{Size="43"},
+            });
+            dataDimension.SaveChanges();
+        }
         private static async Task RoleSeeder(IServiceProvider serviceProvider)
         {
             var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -93,7 +119,8 @@ namespace TennisPlanet.Infrastructure.Data.Infrastructure
                 user.Address = "admin address";
                 user.PhoneNumber = "0888888888";
 
-                var result = await userManager.CreateAsync(user, "Admin123456");
+                var result = await userManager.CreateAsync
+                (user, "Admin123456");
 
                 if (result.Succeeded)
                 {

@@ -26,7 +26,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ProductItem" asp-action="Create">Products</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ProductItem" asp-action="Create">Create product</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ProductItem" asp-action="Index">All Products</a>
                         </li>
                         @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                         {

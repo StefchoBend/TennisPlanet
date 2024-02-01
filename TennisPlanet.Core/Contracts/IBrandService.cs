@@ -11,6 +11,6 @@ namespace TennisPlanet.Core.Contracts
     {
         List<Brand> GetBrands();
         Brand GetBrandById(int brandId);
-        List<ProductItem> GetProductsByBrand(int brandId);
+        List<ProductItem> GetProductItemsByBrand(int brandId);
     }
 }

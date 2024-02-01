@@ -16,22 +16,20 @@ namespace TennisPlanet.Core.Services
         {
             _context = context;
         }
-
+        public Category GetCategoryById(int categoryId)
+        {
+            return _context.Categories.Find(categoryId);
+        }
         public List<Category> GetCategories()
         {
             List<Category> categories = _context.Categories.ToList();
             return categories;
         }
-
-        public Category GetCategoryById(int categoryId)
-        {
-            return _context.Categories.Find(categoryId);
-        }
-
-        public List<ProductItem> GetProductsByCategory(int categoryId)
+        public List<ProductItem> GetProductItemsByCategory(int categoryId)
         {
             return _context.ProductItems
-                .Where(x => x.CategoryId == categoryId).ToList();
+                .Where(x => x.CategoryId == categoryId)
+                .ToList();
         }
 
     }

@@ -11,6 +11,6 @@ namespace TennisPlanet.Core.Contracts
     {
         List<Category> GetCategories();
         Category GetCategoryById(int categoryId);
-        List<ProductItem> GetProductsByCategory(int categoryId);
+        List<ProductItem> GetProductItemsByCategory(int categoryId);
     }
 }

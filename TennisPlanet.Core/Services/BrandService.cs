@@ -28,9 +28,9 @@ namespace TennisPlanet.Core.Services
             return brands;
         }
 
-        public List<ProductItem> GetProductsByBrand(int brandId)
+        public List<ProductItem> GetProductItemsByBrand(int brandId)
         {
-            return _context.ProductItems.Where(x=>x.BrandId == brandId)
+            return _context.ProductItems.Where(x => x.BrandId == brandId)
                 .ToList();
         }
     }

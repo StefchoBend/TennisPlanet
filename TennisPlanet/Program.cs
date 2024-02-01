@@ -40,7 +40,7 @@ namespace TennisPlanet
             builder.Services.AddTransient<IProductItemService, ProductItemService>();
 
             var app = builder.Build();
-            app.PrepareDatabase();
+            app.PrepareDatabase();  
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

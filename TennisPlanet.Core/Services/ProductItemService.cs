@@ -18,7 +18,7 @@ namespace TennisPlanet.Core.Services
             _context = context;
         }
 
-        public bool Create(string itemName, int brandId, int categoryId, string picture, decimal price, decimal discount)
+        public bool Create(string itemName, int brandId, int categoryId, string picture, int quantity, decimal price, decimal discount)
         {
             ProductItem item = new ProductItem
             {
@@ -27,6 +27,7 @@ namespace TennisPlanet.Core.Services
                 Category = _context.Categories.Find(categoryId),
 
                 Picture = picture,
+                Quantity = quantity,
                 Price = price,
                 Discount = discount
             };
@@ -75,7 +76,7 @@ namespace TennisPlanet.Core.Services
             return _context.SaveChanges() != 0;
         }
 
-        public bool Update(int productItemId, string itemName, int brandId, int categoryId, string picture, decimal price, decimal discount)
+        public bool Update(int productItemId, string itemName, int brandId, int categoryId, string picture, int quantity, decimal price, decimal discount)
         {
             var productItem = GetProductItemById(productItemId);
             if (productItem == default(ProductItem))
@@ -88,6 +89,7 @@ namespace TennisPlanet.Core.Services
             productItem.Category = _context.Categories.Find(categoryId);
 
             productItem.Picture = picture;
+            productItem.Quantity = quantity;
             productItem.Price = price;
             productItem.Discount = discount;
             _context.Update(productItem);
