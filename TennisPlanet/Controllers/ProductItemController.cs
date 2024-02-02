@@ -36,7 +36,6 @@ namespace TennisPlanet.Controllers
                     CategoryId = products.CategoryId,
                     CategoryName = products.Category.CategoryName,
                     Picture = products.Picture,
-                    Quantity = products.Quantity,
                     Price = products.Price,
                     Discount = products.Discount,
                 }).ToList();
@@ -60,7 +59,6 @@ namespace TennisPlanet.Controllers
                 CategoryId = item.Id,
                 CategoryName = item.Category.CategoryName,
                 Picture = item.Picture,
-                Quantity = item.Quantity,
                 Price = item.Price,
                 Discount = item.Discount
             };
@@ -94,7 +92,7 @@ namespace TennisPlanet.Controllers
             if (ModelState.IsValid)
             {
                 var createdId = _productItemService.Create(productItem.ItemName, productItem.BrandId,
-                    productItem.CategoryId, productItem.Picture, productItem.Quantity, productItem.Price, productItem.Discount);
+                    productItem.CategoryId, productItem.Picture, productItem.Price, productItem.Discount);
                 if (createdId)
                 {
                     return RedirectToAction(nameof(Index));
@@ -119,7 +117,6 @@ namespace TennisPlanet.Controllers
                 BrandId = productItem.BrandId,
                 CategoryId = productItem.CategoryId,
                 Picture = productItem.Picture,
-                Quantity = productItem.Quantity,
                 Price = productItem.Price,
                 Discount = productItem.Discount
             };
@@ -145,8 +142,8 @@ namespace TennisPlanet.Controllers
         {
             if (ModelState.IsValid)
             {
-                var updated = _productItemService.Update(id,productItem.ItemName, productItem.BrandId, productItem.CategoryId, productItem.Picture,
-                    productItem.Quantity, productItem.Price, productItem.Discount);
+                var updated = _productItemService.Update(id,productItem.ItemName, productItem.BrandId, productItem.CategoryId, 
+                    productItem.Picture, productItem.Price, productItem.Discount);
                 if (updated)
                 {
                     return this.RedirectToAction("Index");
@@ -172,7 +169,6 @@ namespace TennisPlanet.Controllers
                 CategoryId = item.Id,
                 CategoryName = item.Category.CategoryName,
                 Picture = item.Picture,
-                Quantity = item.Quantity,
                 Price = item.Price,
                 Discount = item.Discount
             };

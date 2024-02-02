@@ -27,10 +27,6 @@ namespace TennisPlanet.Models.ProductItem
         [Display(Name = "Picture")]
         public string Picture { get; set; } = null!;
 
-        [Range(0, 5000)]
-        [Display(Name = "Quantity")]
-        public int Quantity { get; set; }
-
         [Display(Name = "Price")]
         public decimal Price { get; set; }
 

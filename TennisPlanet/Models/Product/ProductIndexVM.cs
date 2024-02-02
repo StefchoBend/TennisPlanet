@@ -1,25 +1,32 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TennisPlanet.Models.ProductItem
+namespace TennisPlanet.Models.Product
 {
-    public class ProductItemDetailsVM
+    public class ProductIndexVM
     {
         [Key]
         public int Id { get; set; }
 
         [Display(Name = "Product Name")]
-        public string ItemName { get; set; } = null!;
+        public string ItemName { get; set; }
 
         public int BrandId { get; set; }
         [Display(Name = "Brand")]
-        public string BrandName { get; set; } = null!;
+        public string BrandName { get; set; }
 
         public int CategoryId { get; set; }
+
         [Display(Name = "Category")]
-        public string CategoryName { get; set; } = null!;
+        public string CategoryName { get; set; }
 
         [Display(Name = "Picture")]
-        public string Picture { get; set; } = null!;
+        public string Picture { get; set; }
+
+        [Display(Name = "Size")]
+        public string Size { get; set; }
+
+        [Display(Name = "Quantity")]
+        public int Quantity { get; set; }
 
         [Display(Name = "Price")]
         public decimal Price { get; set; }

@@ -33,9 +33,6 @@ namespace TennisPlanet.Models.ProductItem
         [Display(Name = "Price")]
         public decimal Price { get; set; }
 
-        [Display(Name = "Quantity")]
-        public int Quantity { get; set; }
-
         [Display(Name = "Discount")]
         public decimal Discount { get; set; }
     }

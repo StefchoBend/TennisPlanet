@@ -31,8 +31,6 @@ namespace TennisPlanet.Infrastructure.Data.Domain
         public string Picture { get; set; } = null!;
 
         public decimal Price { get; set; }
-        [Range(0, 100)]
-        public int Quantity { get; set; }
         public decimal Discount { get; set; }
         public virtual IEnumerable<Product> Products { get; set; } = new List<Product>();
     }

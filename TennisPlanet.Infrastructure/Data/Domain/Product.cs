@@ -20,6 +20,7 @@ namespace TennisPlanet.Infrastructure.Data.Domain
 
         [Range(0, 100)]
         public int Quantity { get; set; }
+
         public virtual IEnumerable<Order> Orders { get; set; } = new List<Order>();
     }
 }
