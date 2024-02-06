@@ -19,7 +19,7 @@ namespace TennisPlanet.Infrastructure.Data.Domain
         public virtual Dimension Dimension { get; set; } = null!;
 
         [Range(0, 100)]
-        public int Quantity { get; set; }
+        public int QuantityInStock { get; set; }
 
         public virtual IEnumerable<Order> Orders { get; set; } = new List<Order>();
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using System.Security.Claims;
 using TennisPlanet.Core.Contracts;
 using TennisPlanet.Infrastructure.Data.Domain;
@@ -21,6 +22,29 @@ namespace TennisPlanet.Controllers
             _productItemService = productItemService;
         }
 
+        //GET: OrderController
+        [Authorize(Roles ="Administrator")]
+        public ActionResult Index()
+        {
+             List<OrderIndexVM> orders = _orderService.GetOrders()
+                .Select(x => new OrderIndexVM
+                {
+                    Id = x.Id,
+                    OrderDate = x.OrderDate.ToString("dd-MMM-yyyy hh:mm", CultureInfo.InvariantCulture),
+                    UserId = x.UserId,
+                    User = x.User.UserName,
+                    ProductId = x.ProductId,
+                    Product = x.Product.ProductItem.ItemName,
+                    Picture = x.Product.ProductItem.Picture,
+                    Size = x.Product.Dimension.Size,
+                    CountOfProducts = x.Quantity,
+                    Price = x.Price,
+                    Discount = x.Discount,
+                    TotalPrice = x.TotalPrice,
+                }).ToList();
+            return View(orders);
+        }
+
         // GET: OrderController/Create
         public ActionResult Create(int id)
         {
@@ -33,6 +57,7 @@ namespace TennisPlanet.Controllers
             {
                 ProductId = product.Id,
                 ProductName = product.ProductItem.ItemName,
+                QuantityInStock = product.QuantityInStock,
                 Size = product.Dimension.Size,
                 Price = product.ProductItem.Price,
                 Discount = product.ProductItem.Discount,
@@ -47,9 +72,9 @@ namespace TennisPlanet.Controllers
         public ActionResult Create(OrderCreateVM bindingModel)
         {
             string currentUserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var productItem = this._productService.GetProductById(bindingModel.ProductId);
-            if (currentUserId == null || productItem == null || productItem.Quantity < bindingModel.CountOfProducts ||
-               productItem.Quantity == 0)
+            var product = this._productService.GetProductById(bindingModel.ProductId);
+            if (currentUserId == null || product == null || product.QuantityInStock < bindingModel.CountOfProducts ||
+               product.QuantityInStock == 0)
             {
                 return RedirectToAction("Denied", "Order");
             }
@@ -59,6 +84,27 @@ namespace TennisPlanet.Controllers
             }
             return this.RedirectToAction("Index", "Product");
         }
+        public ActionResult MyOrders()
+        {
+            string currentUserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            List<OrderIndexVM> orders = _orderService.GetOrdersByUser(currentUserId)
+                .Select(x => new OrderIndexVM
+                {
+                    Id = x.Id,
+                    OrderDate = x.OrderDate.ToString("dd-MMM-yyyy hh:mm", CultureInfo.InvariantCulture),
+                    UserId = x.UserId,
+                    User = x.User.UserName,
+                    ProductId = x.ProductId,
+                    Product = x.Product.ProductItem.ItemName,
+                    Picture = x.Product.ProductItem.Picture,
+                    CountOfProducts = x.Quantity,
+                    Price = x.Price,
+                    Discount = x.Discount,
+                    TotalPrice = x.TotalPrice,
+                }).ToList();
+            return View(orders);
+        }
+
         // GET: OrderController/Denied
         public ActionResult Denied()  
         {

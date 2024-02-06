@@ -11,8 +11,8 @@ namespace TennisPlanet.Infrastructure.Data.Domain
 
         [Required]
         [ForeignKey("Product")]
-        public int ProductItemId { get; set; }
-        public virtual ProductItem ProductItem { get; set; } = null!;
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; } = null!;
 
         [Required]
         public string UserId { get; set; } = null!;
@@ -22,5 +22,13 @@ namespace TennisPlanet.Infrastructure.Data.Domain
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
+        public decimal TotalPrice
+        {
+            get
+            {
+                return this.Quantity * this.Price - this.Quantity *
+                    this.Price * this.Discount / 100;
+            }
+        }
     }
 }

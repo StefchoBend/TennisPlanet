@@ -22,7 +22,7 @@ namespace TennisPlanet.Core.Services
             Product product = _context.Products.FirstOrDefault(x => x.ProductItemId == productItemId && x.DimensionId == dimensionId);
             if (product != null)
             {
-                product.Quantity += quantity;
+                product.QuantityInStock += quantity;
                 _context.Products.Update(product);
             }
             else
@@ -31,7 +31,7 @@ namespace TennisPlanet.Core.Services
                 {
                     ProductItem = _context.ProductItems.Find(productItemId),
                     Dimension = _context.Dimensions.Find(dimensionId),
-                    Quantity = quantity,
+                    QuantityInStock = quantity,
 
                 };
                 _context.Products.Add(newProduct);

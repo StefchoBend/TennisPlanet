@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TennisPlanet.Core.Contracts;
+using TennisPlanet.Infrastructure.Data.Domain;
 using TennisPlanet.Models.Dimension;
 using TennisPlanet.Models.Product;
 using TennisPlanet.Models.ProductItem;
@@ -34,7 +35,7 @@ namespace TennisPlanet.Controllers
                     CategoryName = x.ProductItem.Category.CategoryName,
                     Picture = x.ProductItem.Picture,
                     Size = x.Dimension.Size,
-                    Quantity = x.Quantity,
+                    QuantityInStock = x.QuantityInStock,
                     Price = x.ProductItem.Price,
                     Discount = x.ProductItem.Discount,
                 }).ToList();
@@ -44,7 +45,25 @@ namespace TennisPlanet.Controllers
         // GET: ProductController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Product item = _productService.GetProductById(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            ProductDetailsVM product = new ProductDetailsVM()
+            {
+                Id = item.Id,
+                ItemName = item.ProductItem.ItemName,
+                BrandId = item.ProductItem.BrandId,
+                BrandName = item.ProductItem.Brand.BrandName,
+                CategoryId = item.Id,
+                CategoryName = item.ProductItem.Category.CategoryName,
+                Picture = item.ProductItem.Picture,
+                QuantityInStock = item.QuantityInStock,
+                Price = item.ProductItem.Price,
+                Discount = item.ProductItem.Discount
+            };
+            return View(product);
         }
 
         // GET: ProductController/Create
@@ -103,6 +122,7 @@ namespace TennisPlanet.Controllers
                 return View();
             }
         }
+
 
         // GET: ProductController/Delete/5
         public ActionResult Delete(int id)
