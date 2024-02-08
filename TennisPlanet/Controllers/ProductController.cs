@@ -155,7 +155,7 @@ namespace TennisPlanet.Controllers
 
 
         // GET: ProductController/Delete/5
-        /* public ActionResult Delete(int id)
+        public ActionResult Delete(int id)
         {
             Product item = _productService.GetProductById(id);
             if (item == null)
@@ -165,13 +165,20 @@ namespace TennisPlanet.Controllers
             ProductDeleteVM product = new ProductDeleteVM()
             {
                 Id = item.Id,
-                ProductName = item.ProductName,
+                ItemName = item.ProductItem.ItemName,
+                BrandId = item.ProductItem.BrandId,
+                BrandName = item.ProductItem.Brand.BrandName,
+                CategoryId = item.Id,
+                CategoryName = item.ProductItem.Category.CategoryName,
+                DimensionId = item.Dimension.Id,
                 Size = item.Dimension.Size,
-                QuantityInStock = item.QuantityInStock,
+                Picture = item.ProductItem.Picture,
+                Quantity = item.QuantityInStock,
+                Price = item.ProductItem.Price,
+                Discount = item.ProductItem.Discount
             };
             return View(product);
         }
-        */
 
         // POST: ProductController/Delete/5
         [HttpPost]
@@ -189,6 +196,10 @@ namespace TennisPlanet.Controllers
             {
                 return View();
             }
-        }   
+        }
+        public IActionResult Success()
+        {
+            return View();
+        }
     }
 }

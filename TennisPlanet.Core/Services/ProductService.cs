@@ -63,7 +63,13 @@ namespace TennisPlanet.Core.Services
 
         public bool RemoveById(int productId)
         {
-            throw new NotImplementedException();
+            var product = GetProductById(productId);
+            if (product == default(Product))
+            {
+                return false;
+            }
+            _context.Remove(product);
+            return _context.SaveChanges() != 0;
         }
 
         public bool Update(int productId, int productItemId, int dimensionId, int quantity)

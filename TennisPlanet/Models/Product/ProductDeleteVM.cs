@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TennisPlanet.Models.Brand;
 using TennisPlanet.Models.Category;
+using TennisPlanet.Models.Dimension;
+using TennisPlanet.Models.ProductItem;
 
 namespace TennisPlanet.Models.Product
 {
@@ -10,12 +12,31 @@ namespace TennisPlanet.Models.Product
         public int Id { get; set; }
 
         [Display(Name = "Product Name")]
-        public string ProductName { get; set; }
+        public string ItemName { get; set; } = null!;
 
+        public int BrandId { get; set; }
+        [Display(Name = "Brand")]
+        public string BrandName { get; set; } = null!;
+
+        public int CategoryId { get; set; }
+        [Display(Name = "Category")]
+        public string CategoryName { get; set; } = null!;
+
+        public int DimensionId { get; set; }
         [Display(Name = "Size")]
         public string Size { get; set; }
 
-        [Display(Name = "QuantityInStock")]
-        public int QuantityInStock { get; set; }
+        [Display(Name = "Picture")]
+        public string Picture { get; set; } = null!;
+
+        [Range(0, 100)]
+        public int Quantity { get; set; }
+
+        [Display(Name = "Price")]
+        public decimal Price { get; set; }
+
+        [Display(Name = "Discount")]
+        public decimal Discount { get; set; }
+
     }
 }
