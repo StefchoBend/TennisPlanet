@@ -15,7 +15,6 @@ namespace TennisPlanet.Infrastructure.Data.Domain
         [MaxLength(30)]
         public string Size { get; set; } = null!;
 
-
         public virtual IEnumerable<Product> Products { get; set; } = new List<Product>();
     }
 }

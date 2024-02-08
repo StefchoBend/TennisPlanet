@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using TennisPlanet.Core.Contracts;
 using TennisPlanet.Infrastructure.Data;
 using TennisPlanet.Infrastructure.Data.Domain;
@@ -17,25 +18,16 @@ namespace TennisPlanet.Core.Services
         {
             _context = context;
         }
+
         public bool Create(int productItemId, int dimensionId, int quantity)
         {
-            Product product = _context.Products.FirstOrDefault(x => x.ProductItemId == productItemId && x.DimensionId == dimensionId);
-            if (product != null)
+            Product item = new Product
             {
-                product.QuantityInStock += quantity;
-                _context.Products.Update(product);
-            }
-            else
-            {
-                Product newProduct = new Product
-                {
-                    ProductItem = _context.ProductItems.Find(productItemId),
-                    Dimension = _context.Dimensions.Find(dimensionId),
-                    QuantityInStock = quantity,
-
-                };
-                _context.Products.Add(newProduct);
-            }
+                ProductItemId = productItemId,
+                DimensionId = dimensionId,
+                QuantityInStock = quantity
+            };
+            _context.Products.Add(item);
             return _context.SaveChanges() != 0;
         }
 
@@ -76,7 +68,16 @@ namespace TennisPlanet.Core.Services
 
         public bool Update(int productId, int productItemId, int dimensionId, int quantity)
         {
-            throw new NotImplementedException();
+            var product = GetProductById(productId);
+            if (product == default(Product))
+            {
+                return false;
+            }
+            product.Id = productId;
+            product.ProductItemId = productItemId;
+            product.DimensionId = dimensionId;
+            product.QuantityInStock = quantity;
+            return _context.SaveChanges() != 0;
         }
     }
 }

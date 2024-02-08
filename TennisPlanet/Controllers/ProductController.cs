@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TennisPlanet.Core.Contracts;
+using TennisPlanet.Core.Services;
 using TennisPlanet.Infrastructure.Data.Domain;
+using TennisPlanet.Models.Brand;
+using TennisPlanet.Models.Category;
 using TennisPlanet.Models.Dimension;
 using TennisPlanet.Models.Product;
 using TennisPlanet.Models.ProductItem;
@@ -12,6 +15,8 @@ namespace TennisPlanet.Controllers
         private readonly IProductItemService _productItemService;
         private readonly IDimensionService _dimensionService;
         private readonly IProductService _productService;
+        // private readonly ICategoryService _categoryService;
+        // private readonly IBrandService _brandService;
 
         public ProductController(IProductItemService productItemService, IDimensionService dimensionService, IProductService productService)
         {
@@ -75,7 +80,7 @@ namespace TennisPlanet.Controllers
                 {
                     Id = x.Id,
                     ProductItemName = x.ItemName
-                }).ToList();
+                }).ToList();                               
             product.Dimensions = _dimensionService.GetDimensions()
                 .Select(x => new DimensionPairVM()
                 {
@@ -90,13 +95,12 @@ namespace TennisPlanet.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([FromForm] ProductCreateVM product)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
-                var createdId = _productService.Create(product.ProductItemId, product.DimensionId,
-                    product.Quantity);
+                var createdId = _productService.Create(product.ProductItemId, product.DimensionId, product.Quantity);
                 if (createdId)
                 {
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Index)); 
                 }
             }
             return View();
@@ -105,41 +109,83 @@ namespace TennisPlanet.Controllers
         // GET: ProductController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Product product = _productService.GetProductById(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            ProductEditVM updatedProduct = new ProductEditVM()
+            {
+                Id = product.Id,
+                ProductItemId = product.ProductItemId,
+                DimensionId = product.DimensionId,
+                Quantity = product.QuantityInStock
+            };
+            updatedProduct.Dimensions = _dimensionService.GetDimensions()
+               .Select(b => new DimensionPairVM()
+                {
+                    Id = b.Id,
+                    Size = b.Size
+                }).ToList();
+            updatedProduct.ProductItems = _productItemService.GetProductItems()
+                .Select(c => new ProductItemPairVM()
+                {
+                    Id = c.Id,
+                    ProductItemName = c.ItemName,
+                }).ToList();
+            return View(updatedProduct);
         }
 
         // POST: ProductController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [ValidateAntiForgeryToken]  
+        public ActionResult Edit(int id, ProductEditVM product)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                var createdId = _productService.Update(id, product.ProductItemId, product.DimensionId, product.Quantity); 
+                if (createdId)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
 
         // GET: ProductController/Delete/5
-        public ActionResult Delete(int id)
+        /* public ActionResult Delete(int id)
         {
-            return View();
+            Product item = _productService.GetProductById(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            ProductDeleteVM product = new ProductDeleteVM()
+            {
+                Id = item.Id,
+                ProductName = item.ProductName,
+                Size = item.Dimension.Size,
+                QuantityInStock = item.QuantityInStock,
+            };
+            return View(product);
         }
+        */
 
         // POST: ProductController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            try
+
+            var deleted = _productService.RemoveById(id);
+
+            if (deleted)
             {
-                return RedirectToAction(nameof(Index));
+                return this.RedirectToAction("Success");
             }
-            catch
+            else
             {
                 return View();
             }
