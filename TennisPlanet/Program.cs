@@ -41,6 +41,7 @@ namespace TennisPlanet
             builder.Services.AddTransient<IOrderService, OrderService>();
             builder.Services.AddTransient<IDimensionService, DimensionService>();
             builder.Services.AddTransient<IProductService, ProductService>();
+            builder.Services.AddTransient<IStatisticsService, StatisticsService>();
 
             var app = builder.Build();
             app.PrepareDatabase();  
