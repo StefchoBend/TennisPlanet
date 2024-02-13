@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - TennisPlanet</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TennisPlanet.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -34,6 +35,33 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="MyOrders">My Orders</a>
                             </li>
                         }
+                        <li class="nav-item dropdown" id="myDropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Items </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#"> Brands &raquo; </a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Wilson">WILSON</a></li>
+                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Babolat">BABOLAT</a></li>
+                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Head">HEAD</a></li>
+                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Yonex">YONEX</a></li>
+                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Dunlop">DUNLOP</a></li>
+                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Tecnifibre">TECNIFIBRE</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#"> Category &raquo;</a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item" href="/ProductItem?searchStringCategoryName=Tennis racket">Tennis racket</a></li>
+                                        <li><a class="dropdown-item" href="/ProductItem?searchStringCategoryName=T-shirt">T-shirt</a></li>
+                                        <li><a class="dropdown-item" href="/ProductItem?searchStringCategoryName=Accessory">Accessory</a></li>
+                                        <li><a class="dropdown-item" href="/ProductItem?SearchStringCategoryName=Antivibrators">Antivibrators</a></li>
+                                        <li><a class="dropdown-item" href="/ProductItem?SearchStringCategoryName=Cordage">Cordage</a></li>
+                                        <li><a class="dropdown-item" href="/ProductItem?SearchStringCategoryName=Sack">Sack</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
 
                         @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                         {
@@ -54,7 +82,6 @@
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li><a class="dropdown-item" href="/Client/Index">Clients</a></li>
-                                    <li><a class="dropdown-item" href="/Order/Index">Orders</a></li>
                                     <li><a class="dropdown-item" href="/Statistics/Index">Statistic</a></li>
                                 </ul>
                             </li>
