@@ -47,7 +47,6 @@ namespace TennisPlanet.Infrastructure.Data.Infrastructure
                 new Category{CategoryName="Antivibrators"},
                 new Category{CategoryName="Cordage"},
                 new Category{CategoryName="Sack"},
-                new Category{CategoryName="Shoe"}, //Pitai gospojata
             });
             dataCategory.SaveChanges();
         }
