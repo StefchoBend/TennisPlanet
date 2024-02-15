@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TennisPlanet.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body style="background-color: greenyellow">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-1" style="background-color: greenyellow">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/images/dv10y202127712021-07-0231996143-removebg-preview.png" height="60px" width="65px" /> TennisPlanet</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -21,44 +21,44 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">All Products</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Product" asp-action="Index">All Products</a>
                         </li>
                         @if (this.User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="MyOrders">My Orders</a>
+                                <a class="nav-link text-black" asp-area="" asp-controller="Order" asp-action="MyOrders">My Orders</a>
                             </li>
                         }
                         <li class="nav-item dropdown" id="myDropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> Items </a>
+                            <a class="nav-link dropdown-toggle text-black" href="#" data-bs-toggle="dropdown"> Items </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="#"> Brands &raquo; </a>
+                                    <a class="dropdown-item text-black" href="#"> Brands &raquo; </a>
                                     <ul class="submenu dropdown-menu">
-                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Wilson">WILSON</a></li>
-                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Babolat">BABOLAT</a></li>
-                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Head">HEAD</a></li>
-                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Yonex">YONEX</a></li>
-                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Dunlop">DUNLOP</a></li>
-                                        <li><a class="dropdown-item" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Tecnifibre">TECNIFIBRE</a></li>
+                                        <li><a class="dropdown-item text-black" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Wilson">WILSON</a></li>
+                                        <li><a class="dropdown-item text-black" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Babolat">BABOLAT</a></li>
+                                        <li><a class="dropdown-item text-black" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Head">HEAD</a></li>
+                                        <li><a class="dropdown-item text-black" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Yonex">YONEX</a></li>
+                                        <li><a class="dropdown-item text-black" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Dunlop">DUNLOP</a></li>
+                                        <li><a class="dropdown-item text-black" asp-controller="ProductItem" asp-action="Index" asp-route-searchStringBrandName="Tecnifibre">TECNIFIBRE</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#"> Category &raquo;</a>
+                                    <a class="dropdown-item text-black" href="#"> Category &raquo;</a>
                                     <ul class="submenu dropdown-menu">
-                                        <li><a class="dropdown-item" href="/ProductItem?searchStringCategoryName=Tennis racket">Tennis racket</a></li>
-                                        <li><a class="dropdown-item" href="/ProductItem?searchStringCategoryName=T-shirt">T-shirt</a></li>
-                                        <li><a class="dropdown-item" href="/ProductItem?searchStringCategoryName=Accessory">Accessory</a></li>
-                                        <li><a class="dropdown-item" href="/ProductItem?SearchStringCategoryName=Antivibrators">Antivibrators</a></li>
-                                        <li><a class="dropdown-item" href="/ProductItem?SearchStringCategoryName=Cordage">Cordage</a></li>
-                                        <li><a class="dropdown-item" href="/ProductItem?SearchStringCategoryName=Sack">Sack</a></li>
-                                        <li><a class="dropdown-item" href="/ProductItem?SearchStringCategoryName=Shoe">Shoe</a></li>
+                                        <li><a class="dropdown-item text-black" href="/ProductItem?searchStringCategoryName=Tennis racket">Tennis racket</a></li>
+                                        <li><a class="dropdown-item text-black" href="/ProductItem?searchStringCategoryName=T-shirt">T-shirt</a></li>
+                                        <li><a class="dropdown-item text-black" href="/ProductItem?searchStringCategoryName=Accessory">Accessory</a></li>
+                                        <li><a class="dropdown-item text-black" href="/ProductItem?SearchStringCategoryName=Antivibrators">Antivibrators</a></li>
+                                        <li><a class="dropdown-item text-black" href="/ProductItem?SearchStringCategoryName=Cordage">Cordage</a></li>
+                                        <li><a class="dropdown-item text-black" href="/ProductItem?SearchStringCategoryName=Sack">Sack</a></li>
+                                        <li><a class="dropdown-item text-black" href="/ProductItem?SearchStringCategoryName=Shoe">Shoe</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -67,23 +67,23 @@
                         @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="ProductItem" asp-action="Create">Create product item</a>
+                                <a class="nav-link text-black" asp-area="" asp-controller="ProductItem" asp-action="Create">Create product item</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Create">Delivery product</a>
+                                <a class="nav-link text-black" asp-area="" asp-controller="Product" asp-action="Create">Delivery product</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="ProductItem" asp-action="Index">All Product items</a>
+                                <a class="nav-link text-black" asp-area="" asp-controller="ProductItem" asp-action="Index">All Product items</a>
                             </li>
                             <li class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                        data-bs-toggle="dropdown" style="background-color: greenyellow" aria-expanded="false">
                                     Statistic Modul
                                 </button>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="/Client/Index">Clients</a></li>
-                                    <li><a class="dropdown-item" href="/Statistics/Index">Statistic</a></li>
+                                    <li><a class="dropdown-item text-black" href="/Client/Index">Clients</a></li>
+                                    <li><a class="dropdown-item text-black" href="/Statistics/Index">Statistic</a></li>
                                 </ul>
                             </li>
                         }

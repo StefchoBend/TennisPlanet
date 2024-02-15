@@ -6,7 +6,7 @@
 @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
 {
     <p>
-        <a asp-action="Create">Create New</a>
+        <a asp-action="Create" class="btn btn-primary mb-2">Create</a>
     </p>
 }
 @*
@@ -25,13 +25,17 @@
              <img src="@product.Picture" class="card-img-top" alt="Product Image">
           <div class="card-body text-center">
                <h4>@product.ItemName</h4>
+                <h6>Brand: <b>@product.BrandName</b></h6>
                 <h6>Price: <b>@product.Price</b></h6>
                 <h6>Discount: <b>@product.Discount</b></h6>
+                <h6>QuantityInStock: <b>@product.QuantityInStock</b></h6>
                 <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="btn btn-success mb-2">Details</a>
-                    <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning mb-2">Edit</a>
-                <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger mb-2">Delete</a>
-                <a asp-action="Create" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-warning">Order</a>
-                    
+                    @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                    {
+                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning mb-2">Edit</a>
+                    }
+                <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-dark mb-2">Delete</a>
+                <a asp-action="Create" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-danger mb-2">Order</a>
           </div>
        </div>
    }

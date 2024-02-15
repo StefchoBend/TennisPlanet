@@ -112,6 +112,7 @@ namespace TennisPlanet.Controllers
 
         // GET: ProductController/Edit/5
         [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
             Product product = _productService.GetProductById(id);
@@ -144,7 +145,8 @@ namespace TennisPlanet.Controllers
 
         // POST: ProductController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]  
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id, ProductEditVM product)
         {
             if (ModelState.IsValid)

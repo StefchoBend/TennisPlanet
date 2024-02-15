@@ -56,10 +56,10 @@
 <div>
     @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
     {
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning mb-2">Edit</a>
     }
     
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-dark mb-2">Back to list</a>
 </div>
 @section Scripts {
     @{
