@@ -29,7 +29,6 @@ namespace TennisPlanet.Infrastructure.Data.Domain
         public virtual Category Category { get; set; } = null!;
 
         public string Picture { get; set; } = null!;
-        public int MyProperty { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
         public virtual IEnumerable<Product> Products { get; set; } = new List<Product>();
