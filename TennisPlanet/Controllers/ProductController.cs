@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TennisPlanet.Core.Contracts;
 using TennisPlanet.Core.Services;
 using TennisPlanet.Infrastructure.Data.Domain;
@@ -10,6 +11,7 @@ using TennisPlanet.Models.ProductItem;
 
 namespace TennisPlanet.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class ProductController : Controller
     {
         private readonly IProductItemService _productItemService;
@@ -27,6 +29,7 @@ namespace TennisPlanet.Controllers
 
 
         // GET: ProductController
+        [AllowAnonymous]
         public ActionResult Index()
         {
             List<ProductIndexVM> products = _productService.GetProducts()
@@ -48,6 +51,7 @@ namespace TennisPlanet.Controllers
         }
 
         // GET: ProductController/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int id)
         {
             Product item = _productService.GetProductById(id);
@@ -107,6 +111,7 @@ namespace TennisPlanet.Controllers
         }
 
         // GET: ProductController/Edit/5
+        [AllowAnonymous]
         public ActionResult Edit(int id)
         {
             Product product = _productService.GetProductById(id);
