@@ -30,22 +30,22 @@ namespace TennisPlanet.Controllers
 
         // GET: ProductController
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(string searchStringCategoryName, string searchStringBrandName)
         {
-            List<ProductIndexVM> products = _productService.GetProducts()
-                .Select(x => new ProductIndexVM
+            List<ProductIndexVM> products = _productService.GetProducts(searchStringCategoryName, searchStringBrandName)
+                .Select(products => new ProductIndexVM
                 {
-                    Id = x.Id,
-                    ItemName = x.ProductItem.ItemName,
-                    BrandId = x.ProductItem.BrandId,
-                    BrandName = x.ProductItem.Brand.BrandName,
-                    CategoryId = x.ProductItem.CategoryId,
-                    CategoryName = x.ProductItem.Category.CategoryName,
-                    Picture = x.ProductItem.Picture,
-                    Size = x.Dimension.Size,
-                    QuantityInStock = x.QuantityInStock,
-                    Price = x.ProductItem.Price,
-                    Discount = x.ProductItem.Discount,
+                    Id = products.Id,
+                    ItemName = products.ProductItem.ItemName,
+                    BrandId = products.ProductItem.BrandId,
+                    BrandName = products.ProductItem.Brand.BrandName,
+                    CategoryId = products.ProductItem.CategoryId,
+                    CategoryName = products.ProductItem.Category.CategoryName,
+                    Picture = products.ProductItem.Picture,
+                    Size = products.Dimension.Size,
+                    QuantityInStock = products.QuantityInStock,
+                    Price = products.ProductItem.Price,
+                    Discount = products.ProductItem.Discount,
                 }).ToList();
             return this.View(products);
         }
@@ -76,6 +76,8 @@ namespace TennisPlanet.Controllers
         }
 
         // GET: ProductController/Create
+        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             var product = new ProductCreateVM();
@@ -97,6 +99,7 @@ namespace TennisPlanet.Controllers
         // POST: ProductController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([FromForm] ProductCreateVM product)
         {
             if (ModelState.IsValid) 
@@ -162,6 +165,8 @@ namespace TennisPlanet.Controllers
 
 
         // GET: ProductController/Delete/5
+        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             Product item = _productService.GetProductById(id);
@@ -190,6 +195,7 @@ namespace TennisPlanet.Controllers
         // POST: ProductController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id, IFormCollection collection)
         {
 
