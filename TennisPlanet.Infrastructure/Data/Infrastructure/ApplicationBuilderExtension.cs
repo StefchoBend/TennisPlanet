@@ -65,6 +65,10 @@ namespace TennisPlanet.Infrastructure.Data.Infrastructure
                 new Brand{BrandName="Yonex"},
                 new Brand{BrandName="Dunlop"},
                 new Brand{BrandName="Tecnifibre"},
+                new Brand{BrandName="Asics"},
+                new Brand{BrandName="Nike"},
+                new Brand{BrandName="Adidas"},
+                new Brand{BrandName="Lacoste"},
             });
             dataBrand.SaveChanges();
         }

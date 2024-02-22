@@ -6,11 +6,10 @@
 }
 
 <h1 class="text-center">@ViewData["Title"]</h1>
-<div class="row">
-    <div class="col-md-4">
+<div class="col-md-4" style="margin:auto">
         <section>
             <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
+                <h2 class="text-center; row">Use a local account to log in.</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -28,7 +27,6 @@
                 </div>
             </form>
         </section>
-    </div>
 </div>
 
 @section Scripts {

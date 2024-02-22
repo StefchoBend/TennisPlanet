@@ -4,6 +4,12 @@
 @inject UserManager<ApplicationUser> UserManager
 
 <ul class="navbar-nav">
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item">
+            <a class="nav-link text-black" asp-area="" asp-controller="Order" asp-action="MyOrders"><i class="bi bi-cart4"></i></a>
+        </li>
+    }
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">

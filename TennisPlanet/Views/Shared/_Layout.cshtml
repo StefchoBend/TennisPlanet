@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TennisPlanet.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    
 </head>
-<body style="background-color: greenyellow">
+<body style="background-color:lightgreen">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-1" style="background-color: greenyellow">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/images/dv10y202127712021-07-0231996143-removebg-preview.png" height="60px" width="65px" /> TennisPlanet</a>
+        <nav style="background-color: lightgreen" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container-fluid"  >
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/images/Logo (1).png" height="85px" width="85px" /> TennisPlanet</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,17 +27,12 @@
                             <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Contacts">Contacts</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-black" asp-area="" asp-controller="Product" asp-action="Index"><i class="bi bi-bag"></i> All Products</a>
                         </li>
-                        @if (this.User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-black" asp-area="" asp-controller="Order" asp-action="MyOrders"><i class="bi bi-cart4"></i> My Orders</a>
-                            </li>
-                        }
+                        
                         <li class="nav-item dropdown" id="myDropdown">
                             <a class="nav-link dropdown-toggle text-black" href="#" data-bs-toggle="dropdown"><i class="bi bi-archive"></i> Items </a>
                             <ul class="dropdown-menu">
@@ -71,14 +68,14 @@
                                 <a class="nav-link text-black" asp-area="" asp-controller="ProductItem" asp-action="Create"><i class="bi bi-pencil"></i> Create product item</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black" asp-area="" asp-controller="Product" asp-action="Create"><i class="bi bi-brush"></i> Delivery product</a>
+                                <a class="nav-link text-black" asp-area="" asp-controller="Product" asp-action="Create">Delivery product</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black" asp-area="" asp-controller="ProductItem" asp-action="Index"><i class="bi bi-backpack"></i> All Product items</a>
                             </li>
                             <li class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                        data-bs-toggle="dropdown" style="background-color: greenyellow" aria-expanded="false">
+                                        data-bs-toggle="dropdown" aria-expanded="false">
                                     Statistic Modul
                                 </button>
 
@@ -87,8 +84,12 @@
                                     <li><a class="dropdown-item text-black" href="/Statistics/Index">Statistic</a></li>
                                 </ul>
                             </li>
+
                         }
+
                     </ul>
+                    
+                    
                      <partial name="_LoginPartial" />
                 </div>
             </div>
