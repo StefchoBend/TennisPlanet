@@ -20,13 +20,12 @@
    @foreach (var product in Model)
    {
                
-       <div class="card" style="width: 24rem; background-color:lightgreen">
+       <div class="card" style="width: 24rem;">
              <img src="@product.Picture" class="card-img-top" alt="Product Image">
           <div class="card-body text-center">
                <h4>@product.ItemName</h4>
                 <h6>Brand: <b>@product.BrandName</b></h6>
                 <h6>Price: <b>@product.Price</b></h6>
-                <h6>Discount: <b>@product.Discount</b></h6>
                 <h6>QuantityInStock: <b>@product.QuantityInStock</b></h6>
                 <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="btn btn-success mb-2">Details</a>
                     @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))

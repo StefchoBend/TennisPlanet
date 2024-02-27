@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TennisPlanet", "TennisPlane
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TennisPlanet.Infrastructure", "TennisPlanet.Infrastructure\TennisPlanet.Infrastructure.csproj", "{FECA49FA-6091-4330-9FAF-F2054911C59D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TennisPlanet.Core", "TennisPlanet.Core\TennisPlanet.Core.csproj", "{329A7446-3B92-4CC2-A17D-2CBA8800664A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TennisPlanet.Core", "TennisPlanet.Core\TennisPlanet.Core.csproj", "{329A7446-3B92-4CC2-A17D-2CBA8800664A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
