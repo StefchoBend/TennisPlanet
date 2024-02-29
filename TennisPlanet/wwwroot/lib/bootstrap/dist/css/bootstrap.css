@@ -4066,8 +4066,8 @@ textarea.form-control-lg {
     position: absolute;
   }
   .navbar-expand-sm .navbar-nav .nav-link {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
   }
   .navbar-expand-sm .navbar-nav-scroll {
     overflow: visible;
@@ -4119,8 +4119,8 @@ textarea.form-control-lg {
     position: absolute;
   }
   .navbar-expand-md .navbar-nav .nav-link {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
   }
   .navbar-expand-md .navbar-nav-scroll {
     overflow: visible;

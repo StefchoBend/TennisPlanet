@@ -2,7 +2,17 @@
 @using TennisPlanet.Infrastructure.Data.Domain
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+<style>
+    .nav-item {
+        font-size: 17px;
+        font-weight: 500
+    }
+    .nav-item button {
+        font-size: 17px;
+        font-weight: 500;
+    }
 
+</style>
 <ul class="navbar-nav">
     @if (this.User.Identity.IsAuthenticated)
     {

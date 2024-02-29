@@ -5,60 +5,19 @@
 
 <h1>My Orders</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Picture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CountOfProducts)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Discount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalPrice)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Product)
-                </td>
-                <td>
-                    <img src="@Html.DisplayFor(modelItem => item.Picture)" alt="Image" width="100" />
+@foreach (var product in Model)
+{
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CountOfProducts)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Discount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalPrice)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="card" style="width: 24rem;">
+        <div class="card-body text-center">
+            <h4>@product.OrderDate</h4>
+            <h6>Brand: <b>@product.Product</b></h6>
+            <h6>Price: <b>@product.Price</b></h6>
+            <img src="@product.Picture" class="card-img-top" alt="Product Image">
+            <h6>CountOfProduct: <b>@product.CountOfProducts</b></h6>
+            <h6>Price: <b>@product.Price</b></h6>
+            <h6>Discount: <b>@product.Discount</b></h6>
+            <h6>TotalPrice: <b>@product.TotalPrice</b></h6>
+        </div>
+    </div>
+}

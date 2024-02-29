@@ -2,63 +2,31 @@
 @{
     ViewData["Title"] = "Details";
 }
-<h1>Details</h1>
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ItemName)
-        </dd>
+<h3><b>@Html.DisplayFor(model=>model.ItemName)</b></h3>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.BrandName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.BrandName)
+<div style="display: flex; align-items: center; justify-content: left; margin-bottom:50px;">
+    <div style="width: 30%; text-align: left;">
+        <img src="@Html.DisplayFor(model => model.Picture)" alt="Image" style="width: 100%; max-height: 60%;" />
+    </div>
+    <div style="width: 50%; padding: 20px;">
+        <p style="font-size:25px;">
+        <dd class="col-sm-10" style="font-size:large">
+            <h6>Product name: <b>@Html.DisplayFor(model => model.ItemName)</b></h6>
+            <h6>Brand: <b>@Html.DisplayFor(model => model.BrandName)</b></h6>
+            <h6>Category: <b>@Html.DisplayFor(model => model.CategoryName)</b></h6>
+            <h6>Quantity in stock: <b>@Html.DisplayFor(model => model.QuantityInStock)</b></h6>
+            <h6>Price: <b>@Html.DisplayFor(model => model.Price)</b></h6>
+            <h6>Discount: <b>@Html.DisplayFor(model => model.Discount)</b></h6>
         </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CategoryName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="@Html.DisplayFor(model => model.Picture)" alt="Image" width="100" />
-            @*@Html.DisplayFor(model => model.Picture)*@
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.QuantityInStock)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.QuantityInStock)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Discount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Discount)
-        </dd>
-    </dl>
+        </p>
+    </div>
 </div>
 <div>
     @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
     {
         <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning mb-2">Edit</a>
     }
-    
+
     <a asp-action="Index" class="btn btn-dark mb-2">Back to list</a>
 </div>
 @section Scripts {
