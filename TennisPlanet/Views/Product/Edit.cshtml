@@ -10,11 +10,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>  <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="ProductItemId" class="control-label"></label>
-                @*<input asp-for="BrandId" class="form-control" />*@
+                @*<input asp-for="CategoryId" class="form-control" />*@
                 <select asp-for="ProductItemId" class="form-control text-center">
                     @foreach (var productItem in Model.ProductItems)
                     {
-                        <option value=" @productItem.Id">@productItem.ProductItemName</option>
+                        <option value="@productItem.Id">@productItem.ProductItemName</option>
                     }
                 </select>
                 <span asp-validation-for="ProductItemId" class="text-danger"></span>
@@ -42,7 +42,7 @@
     </div>
 </div>
 <div>
-    <a asp-action="Index" class="btn btn-dark mb-2">Back to list</a>
+    <a asp-action="Index" class="btn btn-dark mb-2">Back to products</a>
 </div>
 @section Scripts {
     @{

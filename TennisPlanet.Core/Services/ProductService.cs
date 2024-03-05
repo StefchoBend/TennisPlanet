@@ -21,13 +21,23 @@ namespace TennisPlanet.Core.Services
 
         public bool Create(int productItemId, int dimensionId, int quantity)
         {
-            Product item = new Product
+            Product product = _context.Products.FirstOrDefault(x => x.ProductItemId == productItemId && x.DimensionId == dimensionId);
+            if (product != null)
             {
-                ProductItemId = productItemId,
-                DimensionId = dimensionId,
-                QuantityInStock = quantity
-            };
-            _context.Products.Add(item);
+                product.QuantityInStock += quantity;
+                _context.Products.Update(product);
+            }
+            else
+            {
+                Product newProduct = new Product
+                {
+                    ProductItem = _context.ProductItems.Find(productItemId),
+                    Dimension = _context.Dimensions.Find(dimensionId),
+                    QuantityInStock = quantity,
+
+                };
+                _context.Products.Add(newProduct);
+            }
             return _context.SaveChanges() != 0;
         }
 

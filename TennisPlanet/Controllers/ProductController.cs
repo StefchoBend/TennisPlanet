@@ -86,7 +86,7 @@ namespace TennisPlanet.Controllers
                 {
                     Id = x.Id,
                     ProductItemName = x.ItemName
-                }).ToList();                               
+                }).ToList();
             product.Dimensions = _dimensionService.GetDimensions()
                 .Select(x => new DimensionPairVM()
                 {
@@ -102,17 +102,68 @@ namespace TennisPlanet.Controllers
         [Authorize(Roles = "Administrator")]
         public ActionResult Create([FromForm] ProductCreateVM product)
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 var createdId = _productService.Create(product.ProductItemId, product.DimensionId, product.Quantity);
                 if (createdId)
                 {
-                    return RedirectToAction(nameof(Index)); 
+                    return RedirectToAction(nameof(Index));
                 }
             }
             return View();
         }
 
+        // GET: ProductController/Edit/5
+        /*   [AllowAnonymous]
+           [Authorize(Roles = "Administrator")]
+           public ActionResult Edit(int id)
+           {
+               Product product = _productService.GetProductById(id);
+               if (product == null)
+               {
+                   return NotFound();
+               }
+
+               ProductEditVM updatedProduct = new ProductEditVM()
+               {
+                   Id = product.Id,
+                   ProductItemId = product.ProductItemId,
+
+                   DimensionId = product.DimensionId,
+                   Quantity = product.QuantityInStock
+               };
+               updatedProduct.Dimensions = _dimensionService.GetDimensions()
+                  .Select(b => new DimensionPairVM()
+                   {
+                       Id = b.Id,
+                       Size = b.Size
+                   }).ToList();
+             updatedProduct.ProductItems = _productItemService.GetProductItems()
+                   .Select(c => new ProductItemPairVM()
+                   {
+                       Id = c.Id,
+                       ProductItemName = c.ItemName,
+                   }).ToList();
+               return View(updatedProduct);
+           }
+
+           // POST: ProductController/Edit/5
+           [HttpPost]
+           [ValidateAntiForgeryToken]
+           [Authorize(Roles = "Administrator")]
+           public ActionResult Edit(int id, ProductEditVM product)
+           {
+               if (ModelState.IsValid)
+               {
+                   var createdId = _productService.Update(id, product.ProductItemId, product.DimensionId, product.Quantity); 
+                   if (createdId)
+                   {
+                       return RedirectToAction(nameof(Index));
+                   }
+               }
+               return View();
+           }
+        */
         // GET: ProductController/Edit/5
         [AllowAnonymous]
         [Authorize(Roles = "Administrator")]
@@ -127,21 +178,21 @@ namespace TennisPlanet.Controllers
             ProductEditVM updatedProduct = new ProductEditVM()
             {
                 Id = product.Id,
-                ProductItemId = product.ProductItemId,
-                DimensionId = product.DimensionId,
-                Quantity = product.QuantityInStock
+               ProductItemId=product.ProductItemId,
+               DimensionId=product.DimensionId,
+               Quantity=product.QuantityInStock,
             };
-            updatedProduct.Dimensions = _dimensionService.GetDimensions()
-               .Select(b => new DimensionPairVM()
+            updatedProduct.ProductItems = _productItemService.GetProductItems()
+                .Select(b => new ProductItemPairVM()
                 {
                     Id = b.Id,
-                    Size = b.Size
+                    ProductItemName = b.ItemName
                 }).ToList();
-            updatedProduct.ProductItems = _productItemService.GetProductItems()
-                .Select(c => new ProductItemPairVM()
+            updatedProduct.Dimensions = _dimensionService.GetDimensions()
+                .Select(c => new DimensionPairVM()
                 {
                     Id = c.Id,
-                    ProductItemName = c.ItemName,
+                    Size = c.Size
                 }).ToList();
             return View(updatedProduct);
         }
@@ -149,18 +200,17 @@ namespace TennisPlanet.Controllers
         // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id, ProductEditVM product)
         {
             if (ModelState.IsValid)
             {
-                var createdId = _productService.Update(id, product.ProductItemId, product.DimensionId, product.Quantity); 
-                if (createdId)
+                var updated = _productService.Update(id, product.ProductItemId, product.DimensionId, product.Quantity);
+                if (updated)
                 {
-                    return RedirectToAction(nameof(Index));
+                    return this.RedirectToAction("Index");
                 }
             }
-            return View();
+            return View(product);
         }
 
 
