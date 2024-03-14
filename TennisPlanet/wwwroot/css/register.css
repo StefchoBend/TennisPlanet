@@ -1,8 +1,8 @@
 ﻿body {
     background: linear-gradient(to bottom right, #2eb305, #ffff00);
-    margin: 0;
+    margin: auto;
     padding: 0;
-    height: 100vh;
+    height: 10%;
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-#login-submit {
+#registerSubmit {
     background: linear-gradient(to right, #2eb305, #ffff00);
     color: black;
     border: none;

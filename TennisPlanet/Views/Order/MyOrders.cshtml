@@ -17,7 +17,7 @@
             <h6>Size: <b>@product.Size</b></h6>
             <h6>CountOfProducts: <b>@product.CountOfProducts</b></h6>
             <h6>Discount: <b>@product.Discount</b></h6>
-            <h6>TotalPrice: <b>@product.TotalPrice</b></h6>
+                <h6>TotalPrice: <b>@product.TotalPrice.ToString("0.00")</b></h6>
                 <a asp-controller="Order" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger mb-2">Delete</a>
         </div>
     </div>
