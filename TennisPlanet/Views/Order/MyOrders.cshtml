@@ -4,19 +4,23 @@
 }
 
 <h1>My Orders</h1>
-<div style="display:flex;flex-direction:row;">
+<div class="row">
 @foreach (var product in Model)
 {
 
     <div class="card" style="width: 24rem;">
+       <img src="@product.Picture" class="card-img-top" alt="Product Image">
         <div class="card-body text-center">
             <h4>@product.OrderDate</h4>
-            <h6>Brand: <b>@product.Product</b></h6>
-            <img src="@product.Picture" class="card-img-top" alt="Product Image">
+            <h6>Item Name: <b>@product.Product</b></h6>
             <h6>Price: <b>@product.Price</b></h6>
+            <h6>Size: <b>@product.Size</b></h6>
+            <h6>CountOfProducts: <b>@product.CountOfProducts</b></h6>
             <h6>Discount: <b>@product.Discount</b></h6>
             <h6>TotalPrice: <b>@product.TotalPrice</b></h6>
+                <a asp-controller="Order" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger mb-2">Delete</a>
         </div>
     </div>
+       
 }
 </div>

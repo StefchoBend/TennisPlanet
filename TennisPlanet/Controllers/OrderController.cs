@@ -5,6 +5,7 @@ using System.Security.Claims;
 using TennisPlanet.Core.Contracts;
 using TennisPlanet.Infrastructure.Data.Domain;
 using TennisPlanet.Models.Order;
+using TennisPlanet.Models.ProductItem;
 
 namespace TennisPlanet.Controllers
 {
@@ -97,6 +98,7 @@ namespace TennisPlanet.Controllers
                     ProductId = x.ProductId,
                     Product = x.Product.ProductItem.ItemName,
                     Picture = x.Product.ProductItem.Picture,
+                    Size = x.Product.Dimension.Size,
                     CountOfProducts = x.Quantity,
                     Price = x.Price,
                     Discount = x.Discount,
@@ -107,6 +109,49 @@ namespace TennisPlanet.Controllers
 
         // GET: OrderController/Denied
         public ActionResult Denied()  
+        {
+            return View();
+        }
+
+        // GET: OrderController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            Order item = _orderService.GetOrderById(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            OrderDeleteVM order = new OrderDeleteVM()
+            {
+                Id = item.Id,
+                ItemName = item.Product.ProductItem.ItemName,
+                Size = item.Product.Dimension.Size,
+                CountOfProducts = item.Quantity,
+                Picture = item.Product.ProductItem.Picture,
+                Price = item.Price,
+                Discount = item.Discount,
+                TotalPrice = item.TotalPrice,
+            };
+            return View(order);
+        }
+
+        // POST: OrderController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            var deleted = _orderService.RemoveById(id);
+
+            if (deleted)
+            {
+                return this.RedirectToAction("Success");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public IActionResult Success()
         {
             return View();
         }

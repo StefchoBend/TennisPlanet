@@ -3,6 +3,125 @@
     ViewData["Title"] = "Create";
 }
 
+<div class="text-center">
+    <!-- Добавен центриращ контейнер -->
+    <h1>Order</h1>
+
+    <hr />
+    <div class="row justify-content-center">
+        <!-- Центриране на съдържанието -->
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="ProductId" class="form-control" readonly="readonly" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductName" class="control-label"></label>
+                    <input asp-for="ProductName" class="form-control" readonly="readonly" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Picture" class="control-label"></label>
+                    <input type="hidden" asp-for="Picture" class="form-control" readonly="readonly" />
+                    <div><img src="@Html.DisplayFor(model => model.Picture)" alt="Image" width="40%" onclick="zoomImage(this)" style="cursor: pointer;" /></div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" readonly="readonly" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Discount" class="control-label"></label>
+                    <input asp-for="Discount" class="form-control" readonly="readonly" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Size" class="control-label"></label>
+                    <input asp-for="Size" class="form-control" readonly="readonly" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="CountOfProducts" class="control-label"></label>
+                    <input asp-for="CountOfProducts" class="form-control" onclick="calcSum()" />
+                    <span asp-validation-for="CountOfProducts" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TotalPrice" class="control-label"></label>
+                    <input asp-for="TotalPrice" class="form-control" readonly="readonly" />
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="submit" value="Order" class="btn btn-primary" />
+                    <a asp-action="Index" asp-controller="Product" class="btn btn-warning">Back to products</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function calcSum() {
+        let q = document.getElementsByName('CountOfProducts')[0].value;
+        let p = document.getElementsByName('Price')[0].value;
+        let d = document.getElementsByName('Discount')[0].value;
+        let sum = Number(q) * (Number(p) - Number(p) * Number(d) / 100);
+        document.getElementsByName('TotalPrice')[0].value = sum.toFixed(2)
+    }
+    //document.getElementById('CountOfProducts').max = @Model.QuantityInStock; //zashto beshe zakomentirano i v my orders total price .0000
+    document.getElementById('CountOfProducts').min = 1;
+</script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script>
+    function zoomImage(img) {
+        // Създаване на модален прозорец за показване на увеличената снимка
+        var modal = document.createElement('div');
+        modal.classList.add('modal');
+        modal.onclick = function () {
+            modal.remove(); // Премахване на модалния прозорец при клик извън него
+        };
+
+        // Създаване на изображение в модалния прозорец
+        var modalImg = document.createElement('img');
+        modalImg.src = img.src;
+        modalImg.style.maxWidth = '40%';
+        modal.appendChild(modalImg);
+
+        // Добавяне на модалния прозорец в body
+        document.body.appendChild(modal);
+    }
+</script>
+
+<style>
+    /* Стилове за модалния прозорец */
+    .modal {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .modal img {
+            border: 5px solid white;
+            background-color:white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+        }
+</style>
+
+
+@* @model TennisPlanet.Models.Order.OrderCreateVM
+@{
+    ViewData["Title"] = "Create";
+}
+
 <h1>Order</h1>
 
 <hr />
@@ -57,9 +176,9 @@
         let p = document.getElementsByName('Price')[0].value;
         let d = document.getElementsByName('Discount')[0].value;
         let sum = Number(q) * (Number(p) - Number(p) * Number(d) / 100);
-        document.getElementsByName('TotalPrice')[0].value = sum.toFixed(2)
+        document.getElementsByName('TotalPrice')[0].value = sum.toFixed(2) 
     }
-    //document.getElementById('CountOfProducts').max = @Model.QuantityInStock;
+    //document.getElementById('CountOfProducts').max = @Model.QuantityInStock; //zashto beshe zakomentirano i v my orders total price .0000
     document.getElementById('CountOfProducts').min = 1;
 </script>
 
@@ -67,5 +186,6 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
+} 
 
+ *@

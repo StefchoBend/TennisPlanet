@@ -3,12 +3,6 @@
     ViewData["Title"] = "Index";
 }
 <h1>All Product Items</h1>
-@if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
-{
-    <p>
-        <a asp-action="Create" class="btn btn-primary mb-2">Create</a>
-    </p>
-}
 
 <body>
     <div class="row">
@@ -20,14 +14,13 @@
                 <div class="card-body text-center">
                     <h4>@product.ItemName</h4>
                     <h6>Brand: <b>@product.BrandName</b></h6>
-                    <h6>Price: <b>@product.Price</b></h6>
-                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="btn btn-success mb-2">Details</a>
+                    <h6>Price: <b>@product.Price</b></h6>                   
                     @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                     {
-                        <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning mb-2">Edit</a>
-                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-dark mb-2">Delete</a>
+                        <a asp-controller="ProductItem" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning mb-2">Edit</a>
+                        <a asp-controller="ProductItem" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-dark mb-2">Delete</a>
                     }
-                    <a asp-action="Create" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-danger mb-2">Order</a>
+                  
                 </div>
             </div>
         }

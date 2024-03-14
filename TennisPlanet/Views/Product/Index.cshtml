@@ -21,7 +21,7 @@
    {
                
        <div class="card" style="width: 24rem;">
-             <img src="@product.Picture" class="card-img-top" alt="Product Image">
+             <img class="zoom" src="@product.Picture" class="card-img-top" alt="Product Image">
           <div class="card-body text-center">
                <h4>@product.ItemName</h4>
                 <h6>Brand: <b>@product.BrandName</b></h6>
@@ -34,7 +34,15 @@
                         <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning mb-2">Edit</a>
                         <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-dark mb-2">Delete</a>
                     }
-                <a asp-action="Create" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-danger mb-2">Order</a>
+                    @if (product.QuantityInStock<=0)
+                    {
+                        <h5>Out of stock!</h5>
+                    }
+                    else
+                    {
+                        <a asp-action="Create" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-danger mb-2">Order</a>
+                    }
+                   
           </div>
        </div>
    }
@@ -45,4 +53,64 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+<style>
+    .zoom {
+        padding: 50px;     
+        transition: transform .2s; /* Animation */
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
+    }
 
+        .zoom:hover {
+            transform: scale(1.30); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+</style>
+
+ @* ﻿@model IEnumerable<TennisPlanet.Models.Product.ProductIndexVM>
+ @{
+     ViewData["Title"] = "Index";
+ }
+ <h1>All Products</h1>
+ @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+ {
+     <p>
+         <a asp-action="Create" class="btn btn-primary mb-2">Create</a>
+     </p>
+ }
+ <form asp-controller="Product" asp-action="Index" method="get">
+     <p>
+         Brand: <input type="text" name="SearchStringBrandName" />  Category: <input type="text" name="SearchStringCategoryName" />
+         <input type="submit" value="Filter" />
+     </p>
+ </form>
+ <body>
+ <div class="row">
+    @foreach (var product in Model)
+    {
+               
+        <div class="card" style="width: 24rem;">
+              <img src="@product.Picture" class="card-img-top" alt="Product Image">
+           <div class="card-body text-center">
+                <h4>@product.ItemName</h4>
+                 <h6>Brand: <b>@product.BrandName</b></h6>
+                 <h6>Size: <b>@product.Size</b></h6>
+                 <h6>Price: <b>@product.Price</b></h6>
+                 <h6>QuantityInStock: <b>@product.QuantityInStock</b></h6>
+                 <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="btn btn-success mb-2">Details</a>
+                     @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                     {
+                         <a asp-controller="Product" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning mb-2">Edit</a>
+                         <a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-dark mb-2">Delete</a>
+                     }
+                 <a asp-action="Create" asp-controller="Order" asp-route-id="@product.Id" class="btn btn-danger mb-2">Order</a>
+           </div>
+        </div>
+    }
+ </div>
+ </body>
+ @section Scripts {
+     @{
+         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+     }
+ } *@

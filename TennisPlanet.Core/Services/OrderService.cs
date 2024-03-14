@@ -45,7 +45,7 @@ namespace TennisPlanet.Core.Services
 
         public Order GetOrderById(int orderId)
         {
-            throw new NotImplementedException();
+            return _context.Orders.Find(orderId);
         }
 
         public List<Order> GetOrders()
@@ -62,7 +62,13 @@ namespace TennisPlanet.Core.Services
 
         public bool RemoveById(int orderId)
         {
-            throw new NotImplementedException();
+            var order = GetOrderById(orderId);
+            if (order == default(Order))
+            {
+                return false;
+            }
+            _context.Remove(order);
+            return _context.SaveChanges() != 0;
         }
 
         public bool Update(int orderId, int productId, string userId, int quantity)

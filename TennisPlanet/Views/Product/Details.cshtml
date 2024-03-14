@@ -4,10 +4,11 @@
 }
 <h3><b>@Html.DisplayFor(model=>model.ItemName)</b></h3>
 
-<div style="display: flex; align-items: center; justify-content: left; margin-bottom:50px;">
+ <div style="display: flex; align-items: center; justify-content: left; margin-bottom:15px;">
     <div style="width: 30%; text-align: left;">
         <img src="@Html.DisplayFor(model => model.Picture)" alt="Image" style="width: 100%; max-height: 60%;" />
     </div>
+    @*
     <div style="width: 50%; padding: 20px;">
         <p style="font-size:25px;">
         <dd class="col-sm-10" style="font-size:large">
@@ -21,8 +22,42 @@
         </dd>
         </p>
     </div>
+</div> *@
+<table style="width: 50%; padding: 20px;" class="table table-bordered">
+    <tr>
+        <td colspan="2" style="font-size: 25px;"><b>Product information</b></td>
+    </tr>
+    <tr>
+        <td>Product name:</td>
+        <td>@Html.DisplayFor(model => model.ItemName)</td>
+    </tr>
+    <tr>
+        <td>Brand:</td>
+        <td>@Html.DisplayFor(model => model.BrandName)</td>
+    </tr>
+    <tr>
+        <td>Category:</td>
+        <td>@Html.DisplayFor(model => model.CategoryName)</td>
+    </tr>
+    <tr>
+        <td>Size:</td>
+        <td>@Html.DisplayFor(model => model.Size)</td>
+    </tr>
+    <tr>
+        <td>Quantity in stock:</td>
+        <td>@Html.DisplayFor(model => model.QuantityInStock)</td>
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td>@Html.DisplayFor(model => model.Price)</td>
+    </tr>
+    <tr>
+        <td>Discount:</td>
+        <td>@Html.DisplayFor(model => model.Discount)</td>
+    </tr>
+</table>
 </div>
-<div>
+<div class="text-center">
     @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
     {
         <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning mb-2">Edit</a>

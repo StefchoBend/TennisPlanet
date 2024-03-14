@@ -67,6 +67,7 @@ namespace TennisPlanet.Controllers
                 BrandName = item.ProductItem.Brand.BrandName,
                 CategoryId = item.Id,
                 CategoryName = item.ProductItem.Category.CategoryName,
+                Size = item.Dimension.Size,
                 Picture = item.ProductItem.Picture,
                 QuantityInStock = item.QuantityInStock,
                 Price = item.ProductItem.Price,
