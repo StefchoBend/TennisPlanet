@@ -19,5 +19,6 @@ namespace TennisPlanet.Infrastructure.Data
        public DbSet<Product> Products { get; set; }
         public DbSet<Dimension> Dimensions { get; set; }
        public DbSet<ProductItem> ProductItems { get; set; }
+        public DbSet<WishlistItem> WishlistItems { get; set; }
     }
 }
