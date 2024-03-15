@@ -8,21 +8,7 @@
     <div style="width: 30%; text-align: left;">
         <img src="@Html.DisplayFor(model => model.Picture)" alt="Image" style="width: 100%; max-height: 60%;" />
     </div>
-    @*
-    <div style="width: 50%; padding: 20px;">
-        <p style="font-size:25px;">
-        <dd class="col-sm-10" style="font-size:large">
-            <h6>Product name: <b>@Html.DisplayFor(model => model.ItemName)</b></h6>
-            <h6>Brand: <b>@Html.DisplayFor(model => model.BrandName)</b></h6>
-            <h6>Category: <b>@Html.DisplayFor(model => model.CategoryName)</b></h6>
-            <h6>Size: <b>@Html.DisplayFor(model => model.Size)</b></h6>
-            <h6>Quantity in stock: <b>@Html.DisplayFor(model => model.QuantityInStock)</b></h6>
-            <h6>Price: <b>@Html.DisplayFor(model => model.Price)</b></h6>
-            <h6>Discount: <b>@Html.DisplayFor(model => model.Discount)</b></h6>
-        </dd>
-        </p>
-    </div>
-</div> *@
+    
 <table style="width: 50%; padding: 20px;" class="table table-bordered">
     <tr>
         <td colspan="2" style="font-size: 25px;"><b>Product information</b></td>
@@ -70,4 +56,21 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+
+@*
+    <div style="width: 50%; padding: 20px;">
+        <p style="font-size:25px;">
+        <dd class="col-sm-10" style="font-size:large">
+            <h6>Product name: <b>@Html.DisplayFor(model => model.ItemName)</b></h6>
+            <h6>Brand: <b>@Html.DisplayFor(model => model.BrandName)</b></h6>
+            <h6>Category: <b>@Html.DisplayFor(model => model.CategoryName)</b></h6>
+            <h6>Size: <b>@Html.DisplayFor(model => model.Size)</b></h6>
+            <h6>Quantity in stock: <b>@Html.DisplayFor(model => model.QuantityInStock)</b></h6>
+            <h6>Price: <b>@Html.DisplayFor(model => model.Price)</b></h6>
+            <h6>Discount: <b>@Html.DisplayFor(model => model.Discount)</b></h6>
+        </dd>
+        </p>
+    </div>
+</div> *@
 
