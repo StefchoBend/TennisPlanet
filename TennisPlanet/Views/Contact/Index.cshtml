@@ -6,13 +6,13 @@
 
 <h2>Contact Messages</h2>
 
-
 <table class="table">
     <thead>
         <tr>
             <th>Email</th>
             <th>Name</th>
             <th>Message</th>
+            <th>Delete this message</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +22,9 @@
                 <td>@contact.Email</td>
                 <td>@contact.FirstName</td>
                 <td>@contact.Message</td>
+                <td>
+                    <a asp-controller="Contact" asp-action="Delete" asp-route-id="@contact.Id" class="btn btn-danger mb-2" style="margin-left:8%">Delete</a>
+                </td>
             </tr>
         }
     </tbody>

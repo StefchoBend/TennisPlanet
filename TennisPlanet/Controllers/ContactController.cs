@@ -47,12 +47,45 @@ namespace TennisPlanet.Controllers
             }
             return View(contact);
         }
+        // GET: ContactController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            var contact = _contactService.GetMessage().FirstOrDefault(c => c.Id == id);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            var contactDeleteVM = new ContactDeleteVM
+            {
+                Id = contact.Id,
+                Email = contact.Email,
+                FirstName = contact.FirstName,
+                Message = contact.Message
+            };
+
+            return View(contactDeleteVM);
+        }
+
+        // POST: ContactController/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var success = _contactService.Delete(id);
+            if (!success)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return RedirectToAction(nameof(Index));
+        }
 
         // GET: ContactController/Thanks
         public ActionResult Thanks()
         {
             return View();
         }
+
 
     }
 }

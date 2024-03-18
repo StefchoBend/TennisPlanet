@@ -30,6 +30,18 @@ namespace TennisPlanet.Core.Services
             return _context.SaveChanges() != 0;
         }
 
+        public bool Delete(int id)
+        {
+            var item = _context.Contacts.FirstOrDefault(c => c.Id == id);
+            if (item != null)
+            {
+                _context.Contacts.Remove(item);
+                return _context.SaveChanges() != 0;
+            }
+            return false;
+
+        }
+
         public List<Contact> GetMessage()
         {
             return _context.Contacts.ToList();

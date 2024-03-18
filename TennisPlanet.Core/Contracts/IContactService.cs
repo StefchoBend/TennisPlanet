@@ -11,5 +11,6 @@ namespace TennisPlanet.Core.Contracts
     {
         bool Create(string firstName, string email, string message);  
         List<Contact> GetMessage();
+        bool Delete(int id);
     }
 }
