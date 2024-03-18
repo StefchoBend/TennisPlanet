@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TennisPlanet.Models.Contact.ContactIndexVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Contact Messages</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td>@contact.Email</td>
+                <td>@contact.FirstName</td>
+                <td>@contact.Message</td>
+            </tr>
+        }
+    </tbody>
+</table>
