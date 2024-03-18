@@ -32,5 +32,6 @@ namespace TennisPlanet.Models.Product
 
         [Display(Name = "Discount")]
         public decimal Discount { get; set; }
+        public bool IsInWishlist { get; set; }
     }
 }
