@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="CountOfProducts" class="control-label"></label>
-                    <input asp-for="CountOfProducts" class="form-control" onclick="calcSum()" />
+                    <input asp-for="CountOfProducts" min="1" value="1" class="form-control" onclick="calcSum()" />
                     <span asp-validation-for="CountOfProducts" class="text-danger"></span>
                 </div>
                 <div class="form-group">

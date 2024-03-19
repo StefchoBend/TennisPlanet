@@ -1,4 +1,4 @@
-﻿body {
+﻿/*body {
     background: linear-gradient(to bottom right, #2eb305, #ffff00);
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
-}
+}*/
 
 nav {
     background: linear-gradient(to bottom right, #2eb305, #ffff00);
@@ -34,7 +34,7 @@ h2 {
 }
 
 #login-submit {
-    background: linear-gradient(to right, #2eb305, #ffff00);
+    background: linear-gradient(to bottom right, #2eb305, #ffff00);
     color: black;
     border: none;
 }
