@@ -67,13 +67,17 @@ namespace TennisPlanet.Core.Services
             {
                 return false;
             }
+
+            var product = _context.Products.FirstOrDefault(x => x.Id == order.ProductId);
+            if (product == null) { return false; }
+
+            product.QuantityInStock += order.Quantity;
+
+            _context.Products.Update(product);
             _context.Remove(order);
             return _context.SaveChanges() != 0;
         }
 
-        public bool Update(int orderId, int productId, string userId, int quantity)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
