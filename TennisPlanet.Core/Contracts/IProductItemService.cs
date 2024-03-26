@@ -9,8 +9,8 @@ namespace TennisPlanet.Core.Contracts
 {
     public interface IProductItemService
     {
-        bool Create(string itemName, int brandId, int categoryId, string picture, decimal price, decimal discount);
-        bool Update(int productItemId, string itemName, int brandId, int categoryId, string picture, decimal price, decimal discount);
+        bool Create(string itemName, int brandId, int categoryId, string picture, string description, decimal price, decimal discount);
+        bool Update(int productItemId, string itemName, int brandId, int categoryId, string picture, string description, decimal price, decimal discount);
 
         List<ProductItem> GetProductItems();
 

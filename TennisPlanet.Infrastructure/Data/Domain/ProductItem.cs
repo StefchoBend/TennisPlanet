@@ -27,8 +27,11 @@ namespace TennisPlanet.Infrastructure.Data.Domain
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; } = null!;
-
+        [Required]
         public string Picture { get; set; } = null!;
+        [Required]
+        public string Description { get; set; }
+        [Required]
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
         public virtual IEnumerable<Product> Products { get; set; } = new List<Product>();

@@ -21,6 +21,8 @@ namespace TennisPlanet.Models.Product
 
         [Display(Name = "Picture")]
         public string Picture { get; set; }
+        [Display(Name = "Description")]
+        public string Description { get; set; }
 
         [Display(Name = "Size")]
         public string Size { get; set; }

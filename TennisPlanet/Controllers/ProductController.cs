@@ -42,6 +42,7 @@ namespace TennisPlanet.Controllers
                     CategoryId = products.ProductItem.CategoryId,
                     CategoryName = products.ProductItem.Category.CategoryName,
                     Picture = products.ProductItem.Picture,
+                    Description = products.ProductItem.Description,
                     Size = products.Dimension.Size,
                     QuantityInStock = products.QuantityInStock,
                     Price = products.ProductItem.Price,
@@ -69,6 +70,7 @@ namespace TennisPlanet.Controllers
                 CategoryName = item.ProductItem.Category.CategoryName,
                 Size = item.Dimension.Size,
                 Picture = item.ProductItem.Picture,
+                Description = item.ProductItem.Description,
                 QuantityInStock = item.QuantityInStock,
                 Price = item.ProductItem.Price,
                 Discount = item.ProductItem.Discount
@@ -236,6 +238,7 @@ namespace TennisPlanet.Controllers
                 DimensionId = item.Dimension.Id,
                 Size = item.Dimension.Size,
                 Picture = item.ProductItem.Picture,
+                Description = item.ProductItem.Description,
                 Quantity = item.QuantityInStock,
                 Price = item.ProductItem.Price,
                 Discount = item.ProductItem.Discount

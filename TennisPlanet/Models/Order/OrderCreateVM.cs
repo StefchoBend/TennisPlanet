@@ -12,6 +12,7 @@ namespace TennisPlanet.Models.Order
         public string ProductName { get; set; } = null!;
         public int QuantityInStock { get; set; }
         public string? Picture { get; set; }
+        public string Description { get; set; }
         public string Size { get; set; }
         [Range(1, 100)]
         public int CountOfProducts { get; set; }

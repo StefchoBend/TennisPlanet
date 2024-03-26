@@ -4,11 +4,11 @@
     ViewData["Title"] = "Create product item";
 }
 
-<h1>Create</h1>
+<h1 style="text-align:center">Create</h1>
 
-<h4>Create product items</h4>
+<h4 style="text-align:center">Create product items</h4>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -45,6 +45,11 @@
                 <span asp-validation-for="Picture" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
@@ -54,15 +59,19 @@
                 <input asp-for="Discount" class="form-control" />
                 <span asp-validation-for="Discount" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <div class="row">
+                    <div class="col-md">
+                        <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                    </div>
+                    <div class="col-md">
+                        <a asp-action="Index" class="btn btn-dark btn-block">Back to product items</a>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" class="btn btn-dark mb-2">Back to list</a>
 </div>
 @section Scripts {
     @{

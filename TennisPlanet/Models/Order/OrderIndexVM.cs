@@ -10,6 +10,7 @@
         public int ProductId { get; set; }
         public string Product { get; set; } = null!;
         public string Picture { get; set; } = null!;
+        public string Description { get; set; }
         public string Size { get; set; }
         public int CountOfProducts { get; set; }
         public decimal Price { get; set; }

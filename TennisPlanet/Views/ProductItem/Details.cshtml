@@ -34,6 +34,12 @@
             @*@Html.DisplayFor(model => model.Picture)*@
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd class="col-sm-10">
@@ -52,7 +58,7 @@
     {
         <a asp-controller="Product" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning mb-2">Edit</a>
     }
-    <a asp-action="Index" class="btn btn-dark mb-2">Back to list</a>
+    <a asp-action="Index" class="btn btn-dark mb-2">Back to poduct items</a>
 </div>
 @section Scripts {
     @{

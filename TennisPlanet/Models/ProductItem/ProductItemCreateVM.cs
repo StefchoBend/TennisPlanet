@@ -29,6 +29,8 @@ namespace TennisPlanet.Models.ProductItem
 
         [Display(Name = "Picture")]
         public string Picture { get; set; } = null!;
+        [Display(Name = "Description")]
+        public string Description { get; set; }
 
         [Display(Name = "Price")]
         public decimal Price { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 
 namespace TennisPlanet.Models.ProductItem
 {
@@ -21,6 +22,9 @@ namespace TennisPlanet.Models.ProductItem
 
         [Display(Name = "Picture")]
         public string Picture { get; set; }
+
+        [Display(Name ="Description")]
+        public string Description { get; set; }
 
         [Display(Name = "Price")]
         public decimal Price { get; set; }

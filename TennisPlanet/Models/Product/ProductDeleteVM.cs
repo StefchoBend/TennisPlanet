@@ -28,6 +28,8 @@ namespace TennisPlanet.Models.Product
 
         [Display(Name = "Picture")]
         public string Picture { get; set; } = null!;
+        [Display(Name = "Description")]
+        public string Description { get; set; }
 
         [Range(0, 100)]
         public int Quantity { get; set; }
