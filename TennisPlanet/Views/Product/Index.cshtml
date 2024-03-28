@@ -2,6 +2,9 @@
 @{
     ViewData["Title"] = "All products";
 }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 <h1 style="text-align:center">All Products</h1>
 @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
 {
@@ -23,7 +26,7 @@
        <div class="card" style="width: 24rem; margin-left:3vw">
              <img class="zoom" src="@product.Picture" class="card-img-top" alt="Product Image">
           <div class="card-body text-center">
-               <h4>@product.ItemName</h4>
+               <h4 style="font-family: "Reddit Mono", monospace;">@product.ItemName</h4>
                 <h6>Brand: <b>@product.BrandName</b></h6>
                 <h6>Size: <b>@product.Size</b></h6>
                 <h6>Price: <b>@product.Price</b lv.></h6>

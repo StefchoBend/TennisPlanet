@@ -117,57 +117,6 @@ namespace TennisPlanet.Controllers
         }
 
         // GET: ProductController/Edit/5
-        /*   [AllowAnonymous]
-           [Authorize(Roles = "Administrator")]
-           public ActionResult Edit(int id)
-           {
-               Product product = _productService.GetProductById(id);
-               if (product == null)
-               {
-                   return NotFound();
-               }
-
-               ProductEditVM updatedProduct = new ProductEditVM()
-               {
-                   Id = product.Id,
-                   ProductItemId = product.ProductItemId,
-
-                   DimensionId = product.DimensionId,
-                   Quantity = product.QuantityInStock
-               };
-               updatedProduct.Dimensions = _dimensionService.GetDimensions()
-                  .Select(b => new DimensionPairVM()
-                   {
-                       Id = b.Id,
-                       Size = b.Size
-                   }).ToList();
-             updatedProduct.ProductItems = _productItemService.GetProductItems()
-                   .Select(c => new ProductItemPairVM()
-                   {
-                       Id = c.Id,
-                       ProductItemName = c.ItemName,
-                   }).ToList();
-               return View(updatedProduct);
-           }
-
-           // POST: ProductController/Edit/5
-           [HttpPost]
-           [ValidateAntiForgeryToken]
-           [Authorize(Roles = "Administrator")]
-           public ActionResult Edit(int id, ProductEditVM product)
-           {
-               if (ModelState.IsValid)
-               {
-                   var createdId = _productService.Update(id, product.ProductItemId, product.DimensionId, product.Quantity); 
-                   if (createdId)
-                   {
-                       return RedirectToAction(nameof(Index));
-                   }
-               }
-               return View();
-           }
-        */
-        // GET: ProductController/Edit/5
         [AllowAnonymous]
         [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
@@ -270,3 +219,55 @@ namespace TennisPlanet.Controllers
         }
     }
 }
+
+// GET: ProductController/Edit/5
+/*   [AllowAnonymous]
+   [Authorize(Roles = "Administrator")]
+   public ActionResult Edit(int id)
+   {
+       Product product = _productService.GetProductById(id);
+       if (product == null)
+       {
+           return NotFound();
+       }
+
+       ProductEditVM updatedProduct = new ProductEditVM()
+       {
+           Id = product.Id,
+           ProductItemId = product.ProductItemId,
+
+           DimensionId = product.DimensionId,
+           Quantity = product.QuantityInStock
+       };
+       updatedProduct.Dimensions = _dimensionService.GetDimensions()
+          .Select(b => new DimensionPairVM()
+           {
+               Id = b.Id,
+               Size = b.Size
+           }).ToList();
+     updatedProduct.ProductItems = _productItemService.GetProductItems()
+           .Select(c => new ProductItemPairVM()
+           {
+               Id = c.Id,
+               ProductItemName = c.ItemName,
+           }).ToList();
+       return View(updatedProduct);
+   }
+
+   // POST: ProductController/Edit/5
+   [HttpPost]
+   [ValidateAntiForgeryToken]
+   [Authorize(Roles = "Administrator")]
+   public ActionResult Edit(int id, ProductEditVM product)
+   {
+       if (ModelState.IsValid)
+       {
+           var createdId = _productService.Update(id, product.ProductItemId, product.DimensionId, product.Quantity); 
+           if (createdId)
+           {
+               return RedirectToAction(nameof(Index));
+           }
+       }
+       return View();
+   }
+*/
